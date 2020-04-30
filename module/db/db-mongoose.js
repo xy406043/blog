@@ -1,6 +1,6 @@
 const mongo = require("mongoose"),
   schema = require("./schema"),
-  config = require("../../config/index");
+  config = require("../../config");
 collections = schema.collections;
 
 let dbName = config.dbName,
@@ -137,6 +137,7 @@ class Db {
    */
   find(table, obj = {},fields,options) {
     return new Promise((resolve, reject) => {
+      console.log(table,obj)
       this.connect()
         .then(() => {
           schema[table].find(obj,fields,options, (err, doc) => {
