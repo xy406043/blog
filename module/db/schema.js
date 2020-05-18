@@ -35,6 +35,27 @@ let collection={
       },
     }
   ),
+    /**
+   * @通用分组
+   */
+  group: new Schema(
+    {
+      ObjectId: Schema.Types.ObjectId,
+      user_id: Schema.Types.ObjectId,
+      name: { type: String },
+      description: { type: String },
+      groupType: { type: Number }, // 2为 网址收藏  1 为 日记本 3为博客 
+    },
+    {
+      versionKey: false,
+      index: true,
+      collection: "group",
+      timestamps: {
+        createdAt: true,
+        updatedAt: true,
+      },
+    }
+  ),
   /**
    * @博客标签
    */
@@ -59,6 +80,7 @@ let collection={
 
 module.exports = {
     collections: collection,
+    group:mongoose.model("model",collection['group']),
     blog: mongoose.model("blog", collection["blog"]),
     blog_tags: mongoose.model("blog_tags", collection["blog_tags"])
   };

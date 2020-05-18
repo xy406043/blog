@@ -5,14 +5,13 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-const ports = require("./package.json").ports
 const index = require('./routes/index')
-const history = require('./middleware/koa2-connect-history-api-fallback')
+// const history = require('./middleware/koa2-connect-history-api-fallback') //history模式时使用
 
 
-app.use(history({
-verbose: true//打出转发日志
-}));
+// app.use(history({
+// verbose: true//打出转发日志
+// }));
 // error handler
 onerror(app)
 
@@ -29,7 +28,7 @@ app.use(views(__dirname + '/views', {
 }))
 
 app.use(async (ctx, next) => {
-  // console.log(ctx.header)
+  // console.log("uiquwq")
   // let origin = ctx.url
   ctx.set("Access-Control-Allow-Origin", "*");
   ctx.set("Access-Control-Allow-Methods", "OPTIONS, GET, PUT, POST, DELETE");
