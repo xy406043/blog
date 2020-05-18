@@ -1,7 +1,7 @@
 const router = require('koa-router')()
-const pim = require("./pim")
+const blog = require("./blog")
 
-router.use("/pim",pim)
+router.use("/blog",blog)
 
 
 module.exports = router
